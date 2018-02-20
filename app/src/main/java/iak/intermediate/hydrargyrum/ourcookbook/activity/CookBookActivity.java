@@ -1,7 +1,9 @@
-package iak.intermediate.hydrargyrum.ourcookbook;
+package iak.intermediate.hydrargyrum.ourcookbook.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import iak.intermediate.hydrargyrum.ourcookbook.R;
 
 public class CookBookActivity extends AppCompatActivity {
 
