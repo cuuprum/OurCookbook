@@ -29,6 +29,6 @@ License
 -------
 MIT. See the [LICENSE][3] file for details.
 
-[1]: https://github.com/cuuprum	
-[2]: http://indonesiaandroidkejar.id/
+[1]: http://indonesiaandroidkejar.id/
+[2]: https://github.com/cuuprum	
 [3]: https://github.com/cuuprum/blob/master/LICENSE
