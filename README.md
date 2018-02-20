@@ -18,6 +18,8 @@ Instalation Requirement
 TODO
 ----
  * [x] Complete required Values : color, dimens, string and style
+ * [x] Add Menu/header
+ * [x] Insert drawable icons
  * [ ] Create Model View Presentation structure
  * [ ] Complete backend code
 
