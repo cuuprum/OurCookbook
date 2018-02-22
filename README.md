@@ -33,7 +33,7 @@ TODO
 	* [x] Write adapter/ListAdapter
 	* [x] Write layout/item_list_movie
 	* [x] Update layout/activity_cook_book
-	* [x] Write adapter/ViewHolders/MovieViewHolder
+	* [x] Write adapter/viewholders/MovieViewHolder
 	* [ ] Write activity/MovieActivity
 
 Author
