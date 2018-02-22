@@ -64,7 +64,7 @@ public class BaseActivity extends AppCompatActivity {
             pDialog.cancel();
     }
 
-    protected boolean isInternetConnectionAvaiable(){
+    protected boolean isInternetConnectionAvailable(){
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 

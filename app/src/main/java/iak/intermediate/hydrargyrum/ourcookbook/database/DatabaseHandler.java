@@ -214,6 +214,60 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return movieList;
     }
 
+    public ArrayList<Movies> getAllListRated() {
+        ArrayList<Movies> movieList = new ArrayList<Movies>();
+        String selectQuery = "SELECT " +
+                KEY_ID + ", " +
+                KEY_TITLE + ", " +
+                KEY_POSTER_PATH + ", " +
+                KEY_FAVORITE + ", " +
+                KEY_OVERVIEW + ", " +
+                KEY_POPULARITY + ", " +
+                KEY_RELEASE_DATE + ", " +
+                KEY_VOTE_AVERAGE + ", " +
+                KEY_VOTE_COUNT +
+                " FROM " + TABLE_MOVIES +
+                " WHERE " + KEY_FAVORITE + "= 'FALSE'" +
+                " ORDER BY " + KEY_ID + " DESC";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Movies movies = new Movies(Integer.parseInt(cursor.getString(0)),
+                        cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getDouble(5), cursor.getString(6), cursor.getDouble(7), cursor.getInt(8));
+                movieList.add(movies);
+            } while (cursor.moveToNext());
+        }
+        return movieList;
+    }
+
+    public ArrayList<Movies> getAllListMovies() {
+        ArrayList<Movies> movieList = new ArrayList<Movies>();
+        String selectQuery = "SELECT " +
+                KEY_ID + ", " +
+                KEY_TITLE + ", " +
+                KEY_POSTER_PATH + ", " +
+                KEY_FAVORITE + ", " +
+                KEY_OVERVIEW + ", " +
+                KEY_POPULARITY + ", " +
+                KEY_RELEASE_DATE + ", " +
+                KEY_VOTE_AVERAGE + ", " +
+                KEY_VOTE_COUNT +
+                " FROM " + TABLE_MOVIES +
+                " WHERE " + KEY_FAVORITE + "= 'FALSE'" +
+                " ORDER BY " + KEY_ID + " DESC";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Movies movies = new Movies(Integer.parseInt(cursor.getString(0)),
+                        cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getDouble(5), cursor.getString(6), cursor.getDouble(7), cursor.getInt(8));
+                movieList.add(movies);
+            } while (cursor.moveToNext());
+        }
+        return movieList;
+    }
+
     public int updateMovie(Movies _movies) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

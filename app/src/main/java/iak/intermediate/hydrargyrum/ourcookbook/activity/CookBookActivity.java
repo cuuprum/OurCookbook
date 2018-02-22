@@ -43,7 +43,7 @@ public class CookBookActivity extends BaseActivity {
     AlertDialogManager alert = new AlertDialogManager();
     private RecyclerView recyclerView;
     private ListAdapter listAdapter;
-    private ArrayList<Movies> list = new ArrayList<>()
+    private ArrayList<Movies> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +94,7 @@ public class CookBookActivity extends BaseActivity {
                 holder.getItem().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent in = new Intent(MovieActivity.this,DetailMovieActivity.class);
+                        Intent in = new Intent(CookBookActivity.this,DetailRecipeActivity.class);
                         in.putExtra("movie",model);
                         startActivity(in);
                     }
@@ -190,7 +190,7 @@ public class CookBookActivity extends BaseActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        alert.showAlertDialog(MovieActivity.this, "Closing program....", "Please Wait...", false);
+                        alert.showAlertDialog(CookBookActivity.this, "Closing program....", "Please Wait...", false);
                         moveTaskToBack(true);
                         android.os.Process.killProcess(android.os.Process.myPid());
                         System.exit(1);
