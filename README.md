@@ -29,7 +29,7 @@ TODO
 	* [x] Write model/BaseAcitivity -> Parent class for activity	
 	* [x] Update gradle.build
 	* [x] Write activity/RequestHandler -> Handling volley events
-	* [ ] Write app/AppMovie -> Intermediary  request handler to main acitivity
+	* [x] Write app/AppMovie -> Intermediary  request handler to main acitivity
 	* [ ] Write adapter/ListAdapter
 	* [ ] Write adapter/ViewHolders/MovieViewHolder
 	* [ ] Write activity/MovieActivity
