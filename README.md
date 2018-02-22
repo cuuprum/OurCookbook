@@ -24,8 +24,8 @@ TODO
  * [ ] Complete backend code
 	* [x] Write model/Movies -> getset file
 	* [x] Write model/AppVar -> file for setup global variable
-	* [ ] Write database/DatabaseHandler 
-	* [ ] Write activity/AlertDialogManager
+	* [x] Write database/DatabaseHandler 
+	* [x] Write activity/AlertDialogManager
 	* [ ] Write model/BaseAcitivity -> Parent class for activity	
 	* [ ] Write activity/RequestHandler -> Handling volley events
 	* [ ] Write app/AppMovie -> Intermediary  request handler to main acitivity
