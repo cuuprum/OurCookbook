@@ -28,7 +28,7 @@ public class Movies implements Serializable {
 
     public Movies(){}
 
-    public Movies(int id, String original_language, String original_title, String title, String overview, double popularity, String poster_path, String release_date, double vote_average, int vote_count, String favorite) {
+    public Movies(int id, String title, String original_language, String original_title,  String overview, double popularity, String poster_path, String release_date, double vote_average, int vote_count, String favorite) {
         this.id = id;
         this.original_language = original_language;
         this.original_title = original_title;
@@ -41,6 +41,20 @@ public class Movies implements Serializable {
         this.vote_count = vote_count;
         this.favorite = favorite;
     }
+
+    // For SQLite
+    public Movies(int id, String title, String poster_path, String favorite, String overview, double popularity, String release_date, double vote_average, int vote_count) {
+        this.id = id;
+        this.title = title;
+        this.overview = overview;
+        this.popularity = popularity;
+        this.poster_path = poster_path;
+        this.release_date = release_date;
+        this.vote_average = vote_average;
+        this.vote_count = vote_count;
+        this.favorite = favorite;
+    }
+
 
     public int getId() {
         return id;
