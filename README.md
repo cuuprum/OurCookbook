@@ -30,7 +30,7 @@ TODO
 	* [x] Update gradle.build
 	* [x] Write activity/RequestHandler -> Handling volley events
 	* [x] Write app/AppMovie -> Intermediary  request handler to main acitivity
-	* [ ] Write adapter/ListAdapter
+	* [x] Write adapter/ListAdapter
 	* [ ] Write adapter/ViewHolders/MovieViewHolder
 	* [ ] Write activity/MovieActivity
 
