@@ -1,4 +1,4 @@
-package iak.intermediate.hydrargyrum.ourcookbook.adapter.viewholders;
+package iak.intermediate.hydrargyrum.ourcookbook.adapter;
 
 /**
  * Created by hydrargyrum on 2/22/2018.
