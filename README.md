@@ -31,7 +31,9 @@ TODO
 	* [x] Write activity/RequestHandler -> Handling volley events
 	* [x] Write app/AppMovie -> Intermediary  request handler to main acitivity
 	* [x] Write adapter/ListAdapter
-	* [ ] Write adapter/ViewHolders/MovieViewHolder
+	* [x] Write layout/item_list_movie
+	* [x] Update layout/activity_cook_book
+	* [x] Write adapter/ViewHolders/MovieViewHolder
 	* [ ] Write activity/MovieActivity
 
 Author
