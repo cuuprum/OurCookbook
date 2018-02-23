@@ -55,14 +55,14 @@ public class CookBookActivity extends BaseActivity {
         actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Movies</font>"));
         initRecycler();
         initAdapterMovies();
-        getDB().clearMovie();
+        //getDB().clearMovie();
         connecting();
         showDialog("Loading...");
     }
 
     private void connecting() {
         if (isInternetConnectionAvailable()) {
-            getData(AppVar.URL_MOVIE_550);
+            getData(AppVar.URL_MOVIE_POPULAR);
         } else {
             Toast.makeText(this, "no connection", Toast.LENGTH_SHORT).show();
             hideDialog();

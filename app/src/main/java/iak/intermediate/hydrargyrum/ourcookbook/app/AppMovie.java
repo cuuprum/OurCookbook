@@ -2,7 +2,7 @@ package iak.intermediate.hydrargyrum.ourcookbook.app;
 
 /**
  * Created by hydrargyrum on 2/22/2018.
- * Intermediary  request handler to main acitivity
+ * Representasi si applikasi itu sendiri
  */
 
 import android.app.Application;

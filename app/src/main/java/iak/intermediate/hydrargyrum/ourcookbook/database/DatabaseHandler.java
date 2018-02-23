@@ -121,7 +121,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_POSTER_PATH, _movies.getPoster_path());
         values.put(KEY_FAVORITE, "FALSE");
         values.put(KEY_OVERVIEW, _movies.getOverview());
-        values.put(KEY_OVERVIEW, _movies.getOverview());
         values.put(KEY_POPULARITY, _movies.getPopularity());
         values.put(KEY_RELEASE_DATE, _movies.getRelease_date());
         values.put(KEY_VOTE_AVERAGE, _movies.getVote_average());
@@ -151,7 +150,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         , KEY_RELEASE_DATE
                         , KEY_POSTER_PATH,
                         KEY_FAVORITE}, KEY_ID + "=?",
-                new String[]{String.valueOf(_id)}, null, null, null, null);
+                new String[]{ String.valueOf(_id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 

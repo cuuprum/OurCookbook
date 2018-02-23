@@ -35,6 +35,8 @@ TODO
 	* [x] Update layout/activity_cook_book
 	* [x] Write adapter/viewholders/MovieViewHolder
 	* [x] Write activity/MovieActivity
+	* [x] Write detail activity
+	* [ ] Update detail activity
 
 Author
 ------

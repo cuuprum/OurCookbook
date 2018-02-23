@@ -8,12 +8,12 @@ package iak.intermediate.hydrargyrum.ourcookbook.model;
 public class AppVar {
 
     public static String BASE_URL = "https://api.themoviedb.org/3/movie/";
-    public static final String BASE_IMAGE = "";
+    public static final String BASE_IMAGE = "http://image.tmdb.org/t/p/w185";
     public static final String id = "id";
     public static final String title = "title";
     public static String API_KEY = "a6a32ab0ed2d1765bbcc21c938bdc5ae";
     //public static String key = "";
-    public static final String URL_MOVIE_550 = BASE_URL + "popular?api_key=" + API_KEY; // #TODO Ganti jadi URL_MOVIE_POPULAR
+    public static final String URL_MOVIE_POPULAR = BASE_URL + "popular?api_key=" + API_KEY; // #TODO Ganti jadi URL_MOVIE_POPULAR
 
     String TAG_JSON_ARRAY = "results";
 
