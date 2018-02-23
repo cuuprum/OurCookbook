@@ -36,7 +36,7 @@ TODO
 	* [x] Write adapter/viewholders/MovieViewHolder
 	* [x] Write activity/MovieActivity
 	* [x] Write detail activity
-	* [ ] Update detail activity
+	* [x] Update detail activity and layout detail acivity
 
 Author
 ------
