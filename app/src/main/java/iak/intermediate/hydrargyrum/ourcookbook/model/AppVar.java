@@ -1,5 +1,8 @@
 package iak.intermediate.hydrargyrum.ourcookbook.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by hydrargyrum on 2/21/2018.
  * Kelas ini menyimpan URL EndPoint dan Variable Global
@@ -7,13 +10,16 @@ package iak.intermediate.hydrargyrum.ourcookbook.model;
 
 public class AppVar {
 
-    public static String BASE_URL = "https://api.themoviedb.org/3/movie/";
+    public static String BASE_URL = "https://api.themoviedb.org/3/";
     public static final String BASE_IMAGE = "http://image.tmdb.org/t/p/w185";
     public static final String id = "id";
     public static final String title = "title";
     public static String API_KEY = "a6a32ab0ed2d1765bbcc21c938bdc5ae";
     //public static String key = "";
-    public static final String URL_MOVIE_POPULAR = BASE_URL + "popular?api_key=" + API_KEY; // #TODO Ganti jadi URL_MOVIE_POPULAR
+    public static final String URL_MOVIE_POPULAR = BASE_URL + "movie/popular?api_key=" + API_KEY; // #TODO Ganti jadi URL_MOVIE_POPULAR
+    private static Date dateNow = new Date();
+    private static String strDateNow = String.format("%tF", dateNow);
+    public static final String URL_MOVIE_LATEST = BASE_URL + "discover/movie?api_key=" + API_KEY + "&release_date.lte=" + strDateNow + "&language=en-US&sort_by=release_date.desc&include_adult=false&include_video=false&page=1";
 
     String TAG_JSON_ARRAY = "results";
 

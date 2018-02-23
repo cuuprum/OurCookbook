@@ -62,7 +62,8 @@ public class CookBookActivity extends BaseActivity {
 
     private void connecting() {
         if (isInternetConnectionAvailable()) {
-            getData(AppVar.URL_MOVIE_POPULAR);
+            //getData(AppVar.URL_MOVIE_POPULAR);
+            getData(AppVar.URL_MOVIE_LATEST);
         } else {
             Toast.makeText(this, "no connection", Toast.LENGTH_SHORT).show();
             hideDialog();
