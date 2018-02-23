@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -56,6 +57,9 @@ public class DetailRecipeActivity extends BaseActivity {
         actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Detail Movie</font>"));
 
         movies = (Movies) getIntent().getSerializableExtra("movie");
+        String log = "Id: " + movies.getId() + " ,Title: " + movies.getTitle() +  " ,Image: " + movies.getPoster_path() + " ,favorite: " + movies.getFavorite();
+        Log.d(TAG, log);
+
         title = (TextView) findViewById(R.id.detail_title);
         id = (TextView) findViewById(R.id.id);
         releaseDate = (TextView) findViewById(R.id.release_date);
@@ -68,7 +72,7 @@ public class DetailRecipeActivity extends BaseActivity {
         delete = (ImageView) findViewById(R.id.delete);
 
         int intId = (int) movies.getId();
-        id.setText(intId);
+        id.setText(String.valueOf(intId));
         title.setText(movies.getTitle());
 
         String[] dateParts = movies.getRelease_date().split("-");

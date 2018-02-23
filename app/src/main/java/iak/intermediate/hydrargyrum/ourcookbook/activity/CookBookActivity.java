@@ -43,7 +43,7 @@ public class CookBookActivity extends BaseActivity {
     AlertDialogManager alert = new AlertDialogManager();
     private RecyclerView recyclerView;
     private ListAdapter listAdapter;
-    private ArrayList<Movies> list = new ArrayList<>();
+    private ArrayList<Movies> movieList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,23 +79,23 @@ public class CookBookActivity extends BaseActivity {
                 (R.layout.item_list_movie
                         , MovieViewHolder.class
                         , Movies.class
-                        , list) {
+                        , movieList) {
             @Override
-            protected void bindView(MovieViewHolder holder, final Movies model, int position) {
+            protected void bindView(MovieViewHolder _holder, final Movies _model, int _position) {
                 Picasso.with(getApplicationContext())
-                        .load(AppVar.BASE_IMAGE+model.getPoster_path())
-                        .into(holder.gambar_movie);
+                        .load(AppVar.BASE_IMAGE+_model.getPoster_path())
+                        .into(_holder.gambar_movie);
                 Log.d("Reading: ", "Reading all movies..");
                 List<Movies> movies = getDB().getAllMovies();
                 for (Movies mv : movies) {
                     String log = "Id: " + mv.getId() + " ,Title: " + mv.getTitle() +  " ,Image: " + mv.getPoster_path() + " ,favorite: " + mv.getFavorite();
                     Log.d("movie : ", log);
                 }
-                holder.getItem().setOnClickListener(new View.OnClickListener() {
+                _holder.getItem().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent in = new Intent(CookBookActivity.this,DetailRecipeActivity.class);
-                        in.putExtra("movie",model);
+                        in.putExtra("movie",_model);
                         startActivity(in);
                     }
                 });
@@ -116,7 +116,7 @@ public class CookBookActivity extends BaseActivity {
                 try {
                     JSONObject parent = new JSONObject(response);
                     JSONArray results = parent.getJSONArray("results");
-                    list = new ArrayList<>();
+                    ArrayList<Movies> onlineMovieList = new ArrayList<>();
 
                     for (int i = 0; i < results.length(); i++) {
                         JSONObject sourceParam = results.getJSONObject(i);
@@ -133,15 +133,15 @@ public class CookBookActivity extends BaseActivity {
                         if (getDB().getCountMovies() != results.length()) {
                             getDB().addMovie(datajson);
                         }
-                        list.add(datajson);
+                        onlineMovieList.add(datajson);
                     }
 
-                    listAdapter.swapData(getDB().getAllListMovies());
+                    //listAdapter.swapData(getDB().getAllListMovies());
+                    listAdapter.swapData(onlineMovieList);
                     hideDialog();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         }, new Response.ErrorListener() { // error response
             @Override
