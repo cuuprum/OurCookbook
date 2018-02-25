@@ -1,4 +1,4 @@
-Our Cookbook App
+Our Movie Book App
 ================
 
 This is Android application will provide recipes for cooking many kind of dishes.
@@ -6,8 +6,11 @@ User can browse thousand of dishes easily from big thumbnail picture of recipes.
 Favorite recipes can be bookmarked and easily filtered.
 This application need internet connection for first time, and also can be open at offline mode.
 
-Our Cookbook App written with love for Final Project of [Indonesia Android Kejar Program (Intermediate Level)][1] 2018.
-Based on exercise project : Movie Select Project
+Our Movie Book App written with love for Final Project of [Indonesia Android Kejar Program (Intermediate Level)][1] 2018.
+Based on exercise : Movie Select Project.
+
+At first this project meant to be Our Cookbook App. Thats application provide user to check many recipe.
+Because limited time, I change the project to Our Movie Book App.
 
 
 Instalation Requirement
@@ -37,7 +40,10 @@ TODO
 	* [x] Write activity/MovieActivity
 	* [x] Write detail activity
 	* [x] Update detail activity and layout detail acivity
-
+	* [x] Rename package to OurMovieBook App
+	* [ ] Add Tab Layout, making 2 tab, Popular Movie And My Favorite	
+	
+	
 Author
 ------
 Muhammad Faishal - [@cuuprum on GitHub][2]
