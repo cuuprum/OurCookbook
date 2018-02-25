@@ -49,6 +49,7 @@ TODO
  * [x] Detail Movie detailing
  * [x] Button to next page
  * [x] Button to prev page
+ * [x] Snip Assets Source Link
 	
 Author
 ------
