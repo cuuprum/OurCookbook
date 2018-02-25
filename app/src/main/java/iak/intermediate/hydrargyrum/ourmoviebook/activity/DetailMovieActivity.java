@@ -1,13 +1,11 @@
-package iak.intermediate.hydrargyrum.ourcookbook.activity;
+package iak.intermediate.hydrargyrum.ourmoviebook.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -21,16 +19,14 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
+import iak.intermediate.hydrargyrum.ourmoviebook.R;
+import iak.intermediate.hydrargyrum.ourmoviebook.model.AppVar;
+import iak.intermediate.hydrargyrum.ourmoviebook.model.BaseActivity;
+import iak.intermediate.hydrargyrum.ourmoviebook.model.Movies;
 
-import iak.intermediate.hydrargyrum.ourcookbook.R;
-import iak.intermediate.hydrargyrum.ourcookbook.model.AppVar;
-import iak.intermediate.hydrargyrum.ourcookbook.model.BaseActivity;
-import iak.intermediate.hydrargyrum.ourcookbook.model.Movies;
+public class DetailMovieActivity extends BaseActivity {
 
-public class DetailRecipeActivity extends BaseActivity {
-
-    private static final String TAG = DetailRecipeActivity.class.getSimpleName();
+    private static final String TAG = DetailMovieActivity.class.getSimpleName();
     AlertDialogManager alert = new AlertDialogManager();
     private Movies movies;
     public TextView id;
@@ -96,7 +92,7 @@ public class DetailRecipeActivity extends BaseActivity {
             public void onClick(View view) {
                 movies.setFavorite("TRUE");
                 getDB().updateMovie(movies);
-                Toast.makeText(DetailRecipeActivity.this, "Done, " + movies.getTitle().toString() + " now your favorite.", Toast.LENGTH_LONG).show();
+                Toast.makeText(DetailMovieActivity.this, "Done, " + movies.getTitle().toString() + " now your favorite.", Toast.LENGTH_LONG).show();
                 finish();
             }
         });
@@ -104,14 +100,14 @@ public class DetailRecipeActivity extends BaseActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(DetailRecipeActivity.this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(DetailMovieActivity.this);
                 alertDialogBuilder.setMessage("Are You Sure To Delete This Movie?");
                 alertDialogBuilder.setPositiveButton("Yes",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
                                 getDB().deleteMovie(movies);
-                                Toast.makeText(DetailRecipeActivity.this, "Done ," + movies.getTitle().toString() + " Movie Deleted", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DetailMovieActivity.this, "Done ," + movies.getTitle().toString() + " Movie Deleted", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         });
@@ -140,7 +136,7 @@ public class DetailRecipeActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, CookBookActivity.class);
+        Intent intent = new Intent(this, MovieActivity.class);
         startActivity(intent);
     }
 
@@ -160,7 +156,7 @@ public class DetailRecipeActivity extends BaseActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        alert.showAlertDialog(DetailRecipeActivity.this, "Closing program....", "Please Wait...", false);
+                        alert.showAlertDialog(DetailMovieActivity.this, "Closing program....", "Please Wait...", false);
                         moveTaskToBack(true);
                         android.os.Process.killProcess(android.os.Process.myPid());
                         System.exit(1);

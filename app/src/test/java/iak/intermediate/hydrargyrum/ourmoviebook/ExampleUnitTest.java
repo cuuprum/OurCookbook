@@ -1,4 +1,4 @@
-package iak.intermediate.hydrargyrum.ourcookbook;
+package iak.intermediate.hydrargyrum.ourmoviebook;
 
 import org.junit.Test;
 

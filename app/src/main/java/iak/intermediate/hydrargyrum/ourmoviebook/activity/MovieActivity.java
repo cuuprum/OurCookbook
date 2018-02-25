@@ -1,4 +1,4 @@
-package iak.intermediate.hydrargyrum.ourcookbook.activity;
+package iak.intermediate.hydrargyrum.ourmoviebook.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,13 +22,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.squareup.picasso.Picasso;
-import iak.intermediate.hydrargyrum.ourcookbook.model.AppVar;
-import iak.intermediate.hydrargyrum.ourcookbook.model.BaseActivity;
-import iak.intermediate.hydrargyrum.ourcookbook.R;
-import iak.intermediate.hydrargyrum.ourcookbook.adapter.ListAdapter;
-import iak.intermediate.hydrargyrum.ourcookbook.adapter.viewholders.MovieViewHolder;
-import iak.intermediate.hydrargyrum.ourcookbook.app.AppMovie;
-import iak.intermediate.hydrargyrum.ourcookbook.model.Movies;
+import iak.intermediate.hydrargyrum.ourmoviebook.model.AppVar;
+import iak.intermediate.hydrargyrum.ourmoviebook.model.BaseActivity;
+import iak.intermediate.hydrargyrum.ourmoviebook.R;
+import iak.intermediate.hydrargyrum.ourmoviebook.adapter.ListAdapter;
+import iak.intermediate.hydrargyrum.ourmoviebook.adapter.viewholders.MovieViewHolder;
+import iak.intermediate.hydrargyrum.ourmoviebook.app.AppMovie;
+import iak.intermediate.hydrargyrum.ourmoviebook.model.Movies;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,9 +37,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CookBookActivity extends BaseActivity {
+public class MovieActivity extends BaseActivity {
 
-    private static final String TAG = CookBookActivity.class.getSimpleName();
+    private static final String TAG = MovieActivity.class.getSimpleName();
     AlertDialogManager alert = new AlertDialogManager();
     private RecyclerView recyclerView;
     private ListAdapter listAdapter;
@@ -95,7 +95,7 @@ public class CookBookActivity extends BaseActivity {
                 _holder.getItem().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent in = new Intent(CookBookActivity.this,DetailRecipeActivity.class);
+                        Intent in = new Intent(MovieActivity.this,DetailMovieActivity.class);
                         in.putExtra("movie",_model);
                         startActivity(in);
                     }
@@ -170,7 +170,7 @@ public class CookBookActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, CookBookActivity.class);
+        Intent intent = new Intent(this, MovieActivity.class);
         startActivity(intent);
     }
 
@@ -191,7 +191,7 @@ public class CookBookActivity extends BaseActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        alert.showAlertDialog(CookBookActivity.this, "Closing program....", "Please Wait...", false);
+                        alert.showAlertDialog(MovieActivity.this, "Closing program....", "Please Wait...", false);
                         moveTaskToBack(true);
                         android.os.Process.killProcess(android.os.Process.myPid());
                         System.exit(1);

@@ -1,4 +1,4 @@
-package iak.intermediate.hydrargyrum.ourcookbook.activity;
+package iak.intermediate.hydrargyrum.ourmoviebook.activity;
 
 /**
  * Created by hydrargyrum on 2/22/2018.

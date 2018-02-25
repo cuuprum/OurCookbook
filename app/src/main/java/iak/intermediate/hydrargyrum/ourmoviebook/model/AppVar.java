@@ -1,6 +1,5 @@
-package iak.intermediate.hydrargyrum.ourcookbook.model;
+package iak.intermediate.hydrargyrum.ourmoviebook.model;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**

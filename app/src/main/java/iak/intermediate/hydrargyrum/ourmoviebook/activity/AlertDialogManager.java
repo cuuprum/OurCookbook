@@ -1,10 +1,10 @@
-package iak.intermediate.hydrargyrum.ourcookbook.activity;
+package iak.intermediate.hydrargyrum.ourmoviebook.activity;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
-import iak.intermediate.hydrargyrum.ourcookbook.R;
+import iak.intermediate.hydrargyrum.ourmoviebook.R;
 
 /**
  * Created by hydrargyrum on 2/22/2018.

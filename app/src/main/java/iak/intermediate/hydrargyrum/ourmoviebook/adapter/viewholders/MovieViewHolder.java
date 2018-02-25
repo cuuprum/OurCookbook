@@ -1,4 +1,4 @@
-package iak.intermediate.hydrargyrum.ourcookbook.adapter.viewholders;
+package iak.intermediate.hydrargyrum.ourmoviebook.adapter.viewholders;
 
 /**
  * Created by hydrargyrum on 2/23/2018.
@@ -7,10 +7,9 @@ package iak.intermediate.hydrargyrum.ourcookbook.adapter.viewholders;
 import android.widget.ImageView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import iak.intermediate.hydrargyrum.ourcookbook.R;
+import iak.intermediate.hydrargyrum.ourmoviebook.R;
 
 public class MovieViewHolder extends RecyclerView.ViewHolder {
 

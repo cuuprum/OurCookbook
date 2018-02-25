@@ -7,7 +7,7 @@
     android:background="@color/colorBackground"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     android:fitsSystemWindows="true"
-    tools:context="iak.intermediate.hydrargyrum.ourcookbook.activity.DetailRecipeActivity">
+    tools:context="iak.intermediate.hydrargyrum.ourmoviebook.activity.DetailMovieActivity">
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"

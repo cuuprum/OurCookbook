@@ -1,4 +1,4 @@
-package iak.intermediate.hydrargyrum.ourcookbook.database;
+package iak.intermediate.hydrargyrum.ourmoviebook.database;
 
 /**
  * Created by hydrargyrum on 2/21/2018.
@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import iak.intermediate.hydrargyrum.ourcookbook.model.Movies;
+import iak.intermediate.hydrargyrum.ourmoviebook.model.Movies;
 
 import java.util.ArrayList;
 import java.util.List;

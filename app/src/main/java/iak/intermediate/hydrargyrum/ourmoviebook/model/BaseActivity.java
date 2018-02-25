@@ -1,4 +1,4 @@
-package iak.intermediate.hydrargyrum.ourcookbook.model;
+package iak.intermediate.hydrargyrum.ourmoviebook.model;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
-import iak.intermediate.hydrargyrum.ourcookbook.database.DatabaseHandler;
+import iak.intermediate.hydrargyrum.ourmoviebook.database.DatabaseHandler;
 
 /**
  * Created by hydrargyrum on 2/22/2018.

@@ -1,4 +1,4 @@
-package iak.intermediate.hydrargyrum.ourcookbook;
+package iak.intermediate.hydrargyrum.ourmoviebook;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
