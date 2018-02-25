@@ -45,6 +45,8 @@ TODO
  * [x] Fixing error add favorite
  * [ ] Issued button fav and delete fav
  * [ ] Issued layout at home
+ * [x] Adding Splash Screen
+ * [ ] Detail Movie detailing
 	
 	
 Author
