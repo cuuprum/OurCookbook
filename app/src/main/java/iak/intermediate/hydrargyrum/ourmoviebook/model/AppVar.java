@@ -10,11 +10,13 @@ import java.util.Date;
 public class AppVar {
 
     public static String BASE_URL = "https://api.themoviedb.org/3/";
-    public static final String BASE_IMAGE = "http://image.tmdb.org/t/p/w185";
+    public static final String BASE_IMAGE = "http://image.tmdb.org/t/p/w300";
     public static final String id = "id";
     public static final String title = "title";
     public static String API_KEY = "a6a32ab0ed2d1765bbcc21c938bdc5ae";
     //public static String key = "";
+
+    public static final String URL_MOVIE_TOPRATED = BASE_URL + "movie/top_rated?api_key=" + API_KEY;
     public static final String URL_MOVIE_POPULAR = BASE_URL + "movie/popular?api_key=" + API_KEY; // #TODO Ganti jadi URL_MOVIE_POPULAR
     private static Date dateNow = new Date();
     private static String strDateNow = String.format("%tF", dateNow);

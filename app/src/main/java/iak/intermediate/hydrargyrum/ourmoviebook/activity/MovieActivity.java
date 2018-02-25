@@ -36,6 +36,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class MovieActivity extends BaseActivity {
@@ -65,7 +66,9 @@ public class MovieActivity extends BaseActivity {
                     selectedTab = "popular";
                 else
                     selectedTab = "favorite";
-                connecting();
+
+                onResume();
+
                 Log.d(TAG, "Selected : " + selectedTab);
             }
 
@@ -89,7 +92,7 @@ public class MovieActivity extends BaseActivity {
     private void connecting() {
         if (isInternetConnectionAvailable()) {
             if(selectedTab == "popular")
-                getData(AppVar.URL_MOVIE_POPULAR);
+                getData(AppVar.URL_MOVIE_TOPRATED);
             else
                 listAdapter.swapData(getDB().getAllListRated());
                 //getData(AppVar.URL_MOVIE_LATEST);
@@ -122,12 +125,10 @@ public class MovieActivity extends BaseActivity {
                 Picasso.with(getApplicationContext())
                         .load(AppVar.BASE_IMAGE+_model.getPoster_path())
                         .into(_holder.gambar_movie);
+                Log.d(TAG, "URL : " + AppVar.BASE_IMAGE+_model.getPoster_path());
+                _holder.tvTitle.setText(_model.getTitle() + " (" + _model.getRelease_date().substring(0,4) + ")");
                 Log.d("Reading: ", "Reading all movies..");
-                List<Movies> movies = getDB().getAllMovies();
-                for (Movies mv : movies) {
-                    String log = "Id: " + mv.getId() + " ,Title: " + mv.getTitle() +  " ,Image: " + mv.getPoster_path() + " ,favorite: " + mv.getFavorite();
-                    Log.d(TAG, log);
-                }
+
                 _holder.getItem().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
