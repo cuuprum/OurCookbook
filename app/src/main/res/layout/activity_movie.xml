@@ -13,7 +13,7 @@
         android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorDivider"
+        android:background="@color/colorPrimary"
         android:scrollbars="horizontal"
         app:tabGravity="center"
         app:tabMode="scrollable" />

@@ -55,8 +55,7 @@ public class MovieActivity extends BaseActivity {
         setContentView(R.layout.activity_movie);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#333333")));
-        actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Movies</font>"));
+        actionBar.setTitle("Our Movie Book");
         initTabLayout();
 
         tabLayoutMovie.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

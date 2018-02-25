@@ -46,7 +46,7 @@ TODO
  * [ ] Issued button fav and delete fav
  * [ ] Issued layout at home
  * [x] Adding Splash Screen
- * [ ] Detail Movie detailing
+ * [x] Detail Movie detailing
 	
 	
 Author
