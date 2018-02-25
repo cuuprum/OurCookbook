@@ -41,7 +41,10 @@ TODO
 	* [x] Write detail activity
 	* [x] Update detail activity and layout detail acivity
 	* [x] Rename package to OurMovieBook App
-	* [ ] Add Tab Layout, making 2 tab, Popular Movie And My Favorite	
+ * [x] Add Tab Layout, making 2 tab, Popular Movie And My Favorite	
+ * [x] Fixing error add favorite
+ * [ ] Issued button fav and delete fav
+ * [ ] Issued layout at home
 	
 	
 Author

@@ -125,7 +125,7 @@ public class MovieActivity extends BaseActivity {
                 Picasso.with(getApplicationContext())
                         .load(AppVar.BASE_IMAGE+_model.getPoster_path())
                         .into(_holder.gambar_movie);
-                Log.d(TAG, "URL : " + AppVar.BASE_IMAGE+_model.getPoster_path());
+                //Log.d(TAG, "URL : " + AppVar.BASE_IMAGE+_model.getPoster_path());
                 _holder.tvTitle.setText(_model.getTitle() + " (" + _model.getRelease_date().substring(0,4) + ")");
                 Log.d("Reading: ", "Reading all movies..");
 
@@ -168,7 +168,7 @@ public class MovieActivity extends BaseActivity {
                         datajson.setRelease_date(sourceParam.getString("release_date"));
                         datajson.setVote_average(sourceParam.getDouble("vote_average"));
                         datajson.setVote_count(sourceParam.getInt("vote_count"));
-                        if (getDB().getCountMovies() != results.length()) {
+                        if (getDB().isMovieExist(datajson.getId())) {
                             getDB().addMovie(datajson);
                         }
                         onlineMovieList.add(datajson);

@@ -137,6 +137,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public boolean isMovieExist(int _id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_MOVIES, new String[]{KEY_ID}, KEY_ID + "=?",
+                new String[]{ String.valueOf(_id) }, null, null, null, null);
+        if (cursor.getCount() <= 0){
+            cursor.close();
+            return true;
+        }
+        cursor.close();
+        return false;
+    }
+
     public Movies getMovie(int _id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_MOVIES, new String[]{KEY_ID,
@@ -275,7 +287,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_FAVORITE, "TRUE");
         return db.update(TABLE_MOVIES, values, KEY_ID + " = ?",
                 new String[] { String.valueOf(_movies.getId()) });
-        /*Toast.makeText(DetailMovieActivity.this,"Hello Javatpoint",Toast.LENGTH_SHORT).show();*/
     }
 
     public int unFavoriteMovie(Movies _movies){

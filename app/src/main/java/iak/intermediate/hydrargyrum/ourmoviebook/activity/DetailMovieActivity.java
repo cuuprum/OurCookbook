@@ -53,7 +53,7 @@ public class DetailMovieActivity extends BaseActivity {
         actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Detail Movie</font>"));
 
         movies = (Movies) getIntent().getSerializableExtra("movie");
-        String log = "Id: " + movies.getId() + " ,Title: " + movies.getTitle() +  " ,Image: " + movies.getPoster_path() + " ,favorite: " + movies.getFavorite();
+        String log = "Id: " + movies.getId() + " Title: " + movies.getTitle() +  " ,Image: " + movies.getPoster_path() + " ,favorite: " + movies.getFavorite();
         Log.d(TAG, log);
 
         title = (TextView) findViewById(R.id.detail_title);
@@ -88,19 +88,27 @@ public class DetailMovieActivity extends BaseActivity {
         voteAverage.setText(strVoteAvg);
 
         String strFavorite = (String) movies.getFavorite();
-        markAsFavorite.setVisibility(View.VISIBLE);
-        delete.setVisibility(View.VISIBLE);
 
-        if(strFavorite == "TRUE")
-            markAsFavorite.setVisibility(View.GONE);
-        else
+        Log.d(TAG, movies.getTitle() + " fav = " + strFavorite);
+
+        if(strFavorite == "TRUE") {
+            delete.setVisibility(View.VISIBLE);
+        }
+        else if(strFavorite == "FALSE"){
             delete.setVisibility(View.GONE);
+        }
+        else{
+            markAsFavorite.setVisibility(View.VISIBLE);
+            delete.setVisibility(View.VISIBLE);
+        }
+
 
         markAsFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 movies.setFavorite("TRUE");
-                getDB().updateMovie(movies);
+                int result = getDB().updateMovie(movies);
+                Log.d(TAG, "Title " + movies.getTitle() + "Fav " + movies.getFavorite() + " Result " + String.valueOf(result));
                 Toast.makeText(DetailMovieActivity.this, "Done, " + movies.getTitle().toString() + " now your favorite.", Toast.LENGTH_LONG).show();
                 finish();
             }

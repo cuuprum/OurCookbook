@@ -169,7 +169,8 @@
                                 android:textColor="#FFF"
                                 android:textSize="20dp"
                                 android:textStyle="bold"
-                                android:transcriptMode="normal" />
+                                android:transcriptMode="normal"
+                                android:visibility="gone"/>
 
                             <ImageView
                                 android:id="@+id/delete"
@@ -185,7 +186,8 @@
                                 android:textColor="#FFF"
                                 android:textSize="20dp"
                                 android:textStyle="bold"
-                                android:transcriptMode="normal" />
+                                android:transcriptMode="normal"
+                                android:visibility="gone"/>
                         </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
