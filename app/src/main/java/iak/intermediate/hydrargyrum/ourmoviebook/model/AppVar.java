@@ -20,7 +20,7 @@ public class AppVar {
     public static final String URL_MOVIE_POPULAR = BASE_URL + "movie/popular?api_key=" + API_KEY; // #TODO Ganti jadi URL_MOVIE_POPULAR
     private static Date dateNow = new Date();
     private static String strDateNow = String.format("%tF", dateNow);
-    public static final String URL_MOVIE_LATEST = BASE_URL + "discover/movie?api_key=" + API_KEY + "&release_date.lte=" + strDateNow + "&language=en-US&sort_by=release_date.desc&include_adult=false&include_video=false&page=1";
+    public static final String URL_MOVIE_LATEST = BASE_URL + "discover/movie?api_key=" + API_KEY + "&release_date.lte=" + strDateNow + "&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page="; // + "page brp"
 
     String TAG_JSON_ARRAY = "results";
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -48,6 +49,8 @@ public class MovieActivity extends BaseActivity {
     private ListAdapter listAdapter;
     private ArrayList<Movies> movieList = new ArrayList<>();
     String selectedTab = "popular";
+    private FloatingActionButton fabNext;
+    int page;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +84,15 @@ public class MovieActivity extends BaseActivity {
 
             }
         });
+        page = 1;
+        fabNext = (FloatingActionButton) findViewById(R.id.fabNext);
+        fabNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                page+=1;
+                getData(AppVar.URL_MOVIE_LATEST + page);
+            }
+        });
         initRecycler();
         initAdapterMovies();
         //getDB().clearMovie();
@@ -91,7 +103,7 @@ public class MovieActivity extends BaseActivity {
     private void connecting() {
         if (isInternetConnectionAvailable()) {
             if(selectedTab == "popular")
-                getData(AppVar.URL_MOVIE_TOPRATED);
+                getData(AppVar.URL_MOVIE_LATEST + page);
             else
                 listAdapter.swapData(getDB().getAllListRated());
                 //getData(AppVar.URL_MOVIE_LATEST);

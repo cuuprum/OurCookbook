@@ -239,7 +239,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 KEY_VOTE_COUNT +
                 " FROM " + TABLE_MOVIES +
                 " WHERE " + KEY_FAVORITE + "= 'TRUE'" +
-                " ORDER BY " + KEY_ID + " DESC";
+                " ORDER BY " + KEY_RELEASE_DATE + " DESC";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
@@ -265,7 +265,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 KEY_VOTE_AVERAGE + ", " +
                 KEY_VOTE_COUNT +
                 " FROM " + TABLE_MOVIES +
-                " ORDER BY " + KEY_ID + " DESC";
+                " ORDER BY " + KEY_RELEASE_DATE + " DESC";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
