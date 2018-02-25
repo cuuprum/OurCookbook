@@ -37,8 +37,8 @@ public class DetailMovieActivity extends BaseActivity {
     private TextView voteAverage;
     private TextView overview;
     private ImageView movieImage;
-    private ImageView markAsFavorite;
-    private ImageView delete;
+    private TextView markAsFavorite;
+    private TextView delete;
     private String JSONSTRING;
     private ListView listView;
 
@@ -64,8 +64,8 @@ public class DetailMovieActivity extends BaseActivity {
         voteAverage = (TextView) findViewById(R.id.vote_average);
         overview = (TextView) findViewById(R.id.overview);
         movieImage = (ImageView) findViewById(R.id.gambar_movie);
-        markAsFavorite = (ImageView) findViewById(R.id.mark_as_favourite);
-        delete = (ImageView) findViewById(R.id.delete);
+        markAsFavorite = (TextView) findViewById(R.id.mark_as_favourite);
+        delete = (TextView) findViewById(R.id.delete);
 
         int intId = (int) movies.getId();
         id.setText(String.valueOf(intId));
