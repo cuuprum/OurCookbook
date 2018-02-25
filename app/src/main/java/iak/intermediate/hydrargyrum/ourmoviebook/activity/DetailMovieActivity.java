@@ -45,7 +45,7 @@ public class DetailMovieActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_recipe);
+        setContentView(R.layout.activity_detail_movie);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -87,6 +87,15 @@ public class DetailMovieActivity extends BaseActivity {
         String strVoteAvg = String.valueOf(dblVoteAvg);
         voteAverage.setText(strVoteAvg);
 
+        String strFavorite = (String) movies.getFavorite();
+        markAsFavorite.setVisibility(View.VISIBLE);
+        delete.setVisibility(View.VISIBLE);
+
+        if(strFavorite == "TRUE")
+            markAsFavorite.setVisibility(View.GONE);
+        else
+            delete.setVisibility(View.GONE);
+
         markAsFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,12 +110,12 @@ public class DetailMovieActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(DetailMovieActivity.this);
-                alertDialogBuilder.setMessage("Are You Sure To Delete This Movie?");
+                alertDialogBuilder.setMessage("Are You Sure To Uncheck This Movie as your favorite?");
                 alertDialogBuilder.setPositiveButton("Yes",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
-                                getDB().deleteMovie(movies);
+                                getDB().unFavoriteMovie(movies);
                                 Toast.makeText(DetailMovieActivity.this, "Done ," + movies.getTitle().toString() + " Movie Deleted", Toast.LENGTH_SHORT).show();
                                 finish();
                             }

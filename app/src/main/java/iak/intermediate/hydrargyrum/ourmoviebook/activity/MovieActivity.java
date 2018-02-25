@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DividerItemDecoration;
@@ -41,18 +42,43 @@ public class MovieActivity extends BaseActivity {
 
     private static final String TAG = MovieActivity.class.getSimpleName();
     AlertDialogManager alert = new AlertDialogManager();
+    private TabLayout tabLayoutMovie;
     private RecyclerView recyclerView;
     private ListAdapter listAdapter;
     private ArrayList<Movies> movieList = new ArrayList<>();
+    String selectedTab = "popular";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cook_book);
+        setContentView(R.layout.activity_movie);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#333333")));
         actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Movies</font>"));
+        initTabLayout();
+
+        tabLayoutMovie.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if(tab.getPosition() == 0)
+                    selectedTab = "popular";
+                else
+                    selectedTab = "favorite";
+                connecting();
+                Log.d(TAG, "Selected : " + selectedTab);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         initRecycler();
         initAdapterMovies();
         //getDB().clearMovie();
@@ -62,12 +88,22 @@ public class MovieActivity extends BaseActivity {
 
     private void connecting() {
         if (isInternetConnectionAvailable()) {
-            //getData(AppVar.URL_MOVIE_POPULAR);
-            getData(AppVar.URL_MOVIE_LATEST);
+            if(selectedTab == "popular")
+                getData(AppVar.URL_MOVIE_POPULAR);
+            else
+                listAdapter.swapData(getDB().getAllListRated());
+                //getData(AppVar.URL_MOVIE_LATEST);
         } else {
             Toast.makeText(this, "no connection", Toast.LENGTH_SHORT).show();
             hideDialog();
         }
+    }
+
+    private void initTabLayout(){
+        tabLayoutMovie = (TabLayout) findViewById(R.id.tabLayoutMovie);
+        tabLayoutMovie.setTabGravity(TabLayout.GRAVITY_CENTER);
+        tabLayoutMovie.addTab(tabLayoutMovie.newTab().setText("Popular Movie"));
+        tabLayoutMovie.addTab(tabLayoutMovie.newTab().setText("My Favorite"));
     }
     private void initRecycler() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -90,7 +126,7 @@ public class MovieActivity extends BaseActivity {
                 List<Movies> movies = getDB().getAllMovies();
                 for (Movies mv : movies) {
                     String log = "Id: " + mv.getId() + " ,Title: " + mv.getTitle() +  " ,Image: " + mv.getPoster_path() + " ,favorite: " + mv.getFavorite();
-                    Log.d("movie : ", log);
+                    Log.d(TAG, log);
                 }
                 _holder.getItem().setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -158,7 +194,10 @@ public class MovieActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        listAdapter.swapData(getDB().getAllListMovies());
+        if(selectedTab == "popular")
+            listAdapter.swapData(getDB().getAllListMovies());
+        else
+            listAdapter.swapData(getDB().getAllListRated());
         Log.d( TAG,"Clear data sqlite ,dan insert data dari api");
     }
 

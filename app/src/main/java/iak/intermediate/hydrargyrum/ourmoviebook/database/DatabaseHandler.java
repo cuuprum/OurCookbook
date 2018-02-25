@@ -58,7 +58,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase _db, int _oldVersion, int _newVersion) {
-        _db.execSQL("DROP TABLE IF EXIST " + TABLE_MOVIES);
+        _db.execSQL("DROP TABLE IF EXISTS " + TABLE_MOVIES);
         onCreate(_db);
     }
 
@@ -272,12 +272,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_ID, _movies.getId());
         values.put(KEY_TITLE, _movies.getTitle());
         values.put(KEY_POSTER_PATH, _movies.getPoster_path());
-        values.put(KEY_FAVORITE, "true");
+        values.put(KEY_FAVORITE, "TRUE");
         return db.update(TABLE_MOVIES, values, KEY_ID + " = ?",
                 new String[] { String.valueOf(_movies.getId()) });
         /*Toast.makeText(DetailMovieActivity.this,"Hello Javatpoint",Toast.LENGTH_SHORT).show();*/
     }
 
+    public int unFavoriteMovie(Movies _movies){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_FAVORITE, "FALSE");
+        return db.update(TABLE_MOVIES, values, KEY_ID + " = ?",
+                new String[] { String.valueOf(_movies.getId()) });
+    }
     public void deleteMovie(Movies movies) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_MOVIES, KEY_ID + " = ?",
