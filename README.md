@@ -40,8 +40,9 @@ TODO
 	* [x] Write activity/MovieActivity
 	* [x] Write detail activity
 	* [x] Update detail activity and layout detail acivity
-	* [x] Rename package to OurMovieBook App
-	* [ ] Add Tab Layout, making 2 tab, Popular Movie And My Favorite	
+ * [x] Rename package to OurMovieBook App
+ * [ ] Add Tab Layout, making 2 tab, Popular Movie And My Favorite	
+	* [x] Create 2 tab layout, create class for them, create pager adapter
 	
 	
 Author
