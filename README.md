@@ -47,7 +47,8 @@ TODO
  * [ ] Issued layout at home
  * [x] Adding Splash Screen
  * [x] Detail Movie detailing
-	
+ * [x] Button to next page
+ * [x] Button to prev page
 	
 Author
 ------

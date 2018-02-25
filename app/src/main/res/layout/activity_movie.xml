@@ -37,4 +37,15 @@
         android:layout_alignParentRight="true"
         app:fabSize="normal"/>
 
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fabPrev"
+        android:src="@drawable/ic_prev"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        app:fabSize="normal"/>
+
 </RelativeLayout>

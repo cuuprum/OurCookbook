@@ -50,6 +50,7 @@ public class MovieActivity extends BaseActivity {
     private ArrayList<Movies> movieList = new ArrayList<>();
     String selectedTab = "popular";
     private FloatingActionButton fabNext;
+    private FloatingActionButton fabPrev;
     int page;
 
     @Override
@@ -90,6 +91,17 @@ public class MovieActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 page+=1;
+                getData(AppVar.URL_MOVIE_LATEST + page);
+            }
+        });
+
+        fabPrev = (FloatingActionButton) findViewById(R.id.fabPrev);
+        fabPrev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                page-=1;
+                if(page == 0)
+                    page = 1;
                 getData(AppVar.URL_MOVIE_LATEST + page);
             }
         });
