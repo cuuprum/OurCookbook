@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DividerItemDecoration;
@@ -41,6 +42,7 @@ public class MovieActivity extends BaseActivity {
 
     private static final String TAG = MovieActivity.class.getSimpleName();
     AlertDialogManager alert = new AlertDialogManager();
+    private TabLayout tabLayoutMovie;
     private RecyclerView recyclerView;
     private ListAdapter listAdapter;
     private ArrayList<Movies> movieList = new ArrayList<>();
@@ -48,14 +50,35 @@ public class MovieActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cook_book);
+        setContentView(R.layout.activity_movie);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#333333")));
         actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Movies</font>"));
+        initTabLayoutMovie();;
         initRecycler();
         initAdapterMovies();
         //getDB().clearMovie();
+
+        tabLayoutMovie.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                tab.getPosition();
+                tab.getText();
+                Log.d(TAG, "Tab : " + tab.getText() + " --- " + tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
         connecting();
         showDialog("Loading...");
     }
@@ -69,6 +92,14 @@ public class MovieActivity extends BaseActivity {
             hideDialog();
         }
     }
+
+    private void initTabLayoutMovie(){
+        tabLayoutMovie = (TabLayout) findViewById(R.id.tabLayoutMovie);
+        tabLayoutMovie.setTabGravity(TabLayout.GRAVITY_CENTER);
+        tabLayoutMovie.addTab(tabLayoutMovie.newTab().setText("Popular Movies"));
+        tabLayoutMovie.addTab(tabLayoutMovie.newTab().setText("My Favorite"));
+    }
+
     private void initRecycler() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
