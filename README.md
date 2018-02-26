@@ -52,6 +52,7 @@ TODO
  * [x] Snip Assets Source Link
  * [x] Fix logic error get data when internet connected
  * [ ] Fix logicerror pagination for offline get data
+ * [x] Fix Logic Error for Popular and Fav when connected to internet	
 	
 Author
 ------

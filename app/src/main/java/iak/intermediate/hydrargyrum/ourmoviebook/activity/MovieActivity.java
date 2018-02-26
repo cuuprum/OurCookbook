@@ -2,8 +2,6 @@ package iak.intermediate.hydrargyrum.ourmoviebook.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -12,7 +10,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,8 +34,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 
 public class MovieActivity extends BaseActivity {
 
@@ -51,7 +46,10 @@ public class MovieActivity extends BaseActivity {
     String selectedTab = "popular";
     private FloatingActionButton fabNext;
     private FloatingActionButton fabPrev;
-    int page;
+    int pageOnline;
+    int pageOffline;
+    int pageFav;
+    boolean isSelectPopTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,19 +58,21 @@ public class MovieActivity extends BaseActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setTitle("Our Movie Book");
-        initTabLayout();
 
+        isSelectPopTab = true;
+        initTabLayout();
         tabLayoutMovie.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if(tab.getPosition() == 0) {
-                    selectedTab = "popular";
+                    pageOffline = 1;
+                    pageOnline = 1;
+                    isSelectPopTab = true;
                 }else {
-                    selectedTab = "favorite";
+                    pageFav = 1;
+                    isSelectPopTab = false;
                 }
-
-                connecting(page);
-                Log.d(TAG, "Selected : " + selectedTab);
+                connecting();
             }
 
             @Override
@@ -85,13 +85,21 @@ public class MovieActivity extends BaseActivity {
 
             }
         });
-        page = 1;
+        pageFav = 1;
+        pageOffline = 1;
+        pageOnline = 1;
         fabNext = (FloatingActionButton) findViewById(R.id.fabNext);
         fabNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                page+=1;
-                connecting(page);
+                if(isSelectPopTab) {
+                    pageOnline += 1;
+                    pageOffline += 1;
+                }
+                else{
+                    pageFav += 1;
+                }
+                connecting();
             }
         });
 
@@ -99,31 +107,41 @@ public class MovieActivity extends BaseActivity {
         fabPrev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                page-=1;
-                if(page < 1) {
-                    Toast.makeText(MovieActivity.this, "Already First Page", Toast.LENGTH_SHORT).show();
-                    page = 1;
+                if(isSelectPopTab) {
+                    pageOnline -= 1;
+                    pageOffline -= 1;
                 }
-                connecting(page);
+                else{
+                    pageFav -= 1;
+                }
+
+                if(pageOnline < 1 || pageFav < 1 || pageOffline < 1) {
+                    Toast.makeText(MovieActivity.this, "Already First Page", Toast.LENGTH_SHORT).show();
+                    pageOnline = 1;
+                    pageFav = 1;
+                    pageOffline = 1;
+                }
+
+                connecting();
             }
         });
         initRecycler();
         initAdapterMovies();
 
         showDialog("Loading...");
-        connecting(page);
+        connecting();
     }
 
-    private void connecting(int _page) {
+    private void connecting() {
         if (isInternetConnectionAvailable()) {
-            if(selectedTab == "popular")
-                getData(AppVar.URL_MOVIE_LATEST + _page);
+            if(isSelectPopTab)
+                getData(AppVar.URL_MOVIE_LATEST + pageOnline);
             else
-                listAdapter.swapData(getDB().getAllListRated());
+                listAdapter.swapData(getDB().getAllListRated(pageFav));
                 //getData(AppVar.URL_MOVIE_LATEST);
         } else {
             Toast.makeText(this, "No Connection", Toast.LENGTH_SHORT).show();
-            listAdapter.swapData(getDB().getAllListMovies());
+            listAdapter.swapData(getDB().getAllListMovies(pageOnline));
             hideDialog();
         }
     }
@@ -216,7 +234,7 @@ public class MovieActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        connecting(page);
+        connecting();
     }
 
     @Override
