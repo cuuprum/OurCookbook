@@ -3,6 +3,7 @@ package iak.intermediate.hydrargyrum.ourmoviebook.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.ActionBar;
@@ -50,6 +51,7 @@ public class MovieActivity extends BaseActivity {
     int pageOffline;
     int pageFav;
     boolean isSelectPopTab;
+    private Parcelable recyclerViewStartPos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class MovieActivity extends BaseActivity {
         setContentView(R.layout.activity_movie);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
-        actionBar.setTitle("Our Movie Book");
+        actionBar.setTitle("OUR MOVIE BOOK");
 
         isSelectPopTab = true;
         initTabLayout();
@@ -144,6 +146,7 @@ public class MovieActivity extends BaseActivity {
             listAdapter.swapData(getDB().getAllListMovies(pageOnline));
             hideDialog();
         }
+        recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewStartPos);
     }
 
     private void initTabLayout(){
@@ -154,8 +157,8 @@ public class MovieActivity extends BaseActivity {
     }
     private void initRecycler() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), 1));
+        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),3));
+        recyclerViewStartPos = recyclerView.getLayoutManager().onSaveInstanceState(); // Save state/posisi recycler view pas di awal
     }
     private void initAdapterMovies() {
         listAdapter = new ListAdapter<Movies
