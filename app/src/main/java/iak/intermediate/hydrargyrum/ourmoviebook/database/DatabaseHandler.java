@@ -99,6 +99,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             return true;
         }
         cursor.close();
+        db.close();
         return false;
     }
 
@@ -121,6 +122,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Movies movies = new Movies(Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getDouble(5), cursor.getString(6), cursor.getDouble(7), cursor.getInt(8));
+        db.close();
         return movies;
     }
 
@@ -149,6 +151,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 movieList.add(movies);
             } while (cursor.moveToNext());
         }
+        db.close();
         return movieList;
     }
 
@@ -176,6 +179,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 movieList.add(movies);
             } while (cursor.moveToNext());
         }
+        db.close();
         return movieList;
     }
 
@@ -186,16 +190,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_TITLE, _movies.getTitle());
         values.put(KEY_POSTER_PATH, _movies.getPoster_path());
         values.put(KEY_FAVORITE, "TRUE");
-        return db.update(TABLE_MOVIES, values, KEY_ID + " = ?",
+        int result = 0;
+        result = db.update(TABLE_MOVIES, values, KEY_ID + " = ?",
                 new String[] { String.valueOf(_movies.getId()) });
+        db.close();
+        return result;
     }
 
     public int unFavoriteMovie(Movies _movies){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_FAVORITE, "FALSE");
-        return db.update(TABLE_MOVIES, values, KEY_ID + " = ?",
+        int result = 0;
+        result = db.update(TABLE_MOVIES, values, KEY_ID + " = ?",
                 new String[] { String.valueOf(_movies.getId()) });
+        db.close();
+        return result;
     }
     public void deleteMovie(Movies movies) {
         SQLiteDatabase db = this.getWritableDatabase();

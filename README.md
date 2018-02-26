@@ -54,6 +54,7 @@ TODO
  * [ ] Fix logicerror pagination for offline get data
  * [x] Fix Logic Error for Popular and Fav when connected to internet	
  * [x] Fix Recycler view layout
+ * [x] Add Signed APK
 	
 Author
 ------
