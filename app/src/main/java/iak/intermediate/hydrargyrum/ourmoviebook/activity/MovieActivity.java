@@ -135,6 +135,7 @@ public class MovieActivity extends BaseActivity {
     }
 
     private void connecting() {
+        recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewStartPos);
         if (isInternetConnectionAvailable()) {
             if(isSelectPopTab)
                 getData(AppVar.URL_MOVIE_LATEST + pageOnline);
@@ -143,10 +144,9 @@ public class MovieActivity extends BaseActivity {
                 //getData(AppVar.URL_MOVIE_LATEST);
         } else {
             Toast.makeText(this, "No Connection", Toast.LENGTH_SHORT).show();
-            listAdapter.swapData(getDB().getAllListMovies(pageOnline));
+            listAdapter.swapData(getDB().getAllListMovies(pageOffline));
             hideDialog();
         }
-        recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewStartPos);
     }
 
     private void initTabLayout(){

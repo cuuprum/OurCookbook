@@ -83,7 +83,6 @@
                             android:text="Release Date "
                             android:layout_alignParentLeft="true"
                             android:textColor="#000"
-                            android:textSize="20sp"
                             android:textStyle="bold"/>
                         <TextView
                             android:id="@+id/release_date"
@@ -92,7 +91,6 @@
                             android:layout_toRightOf="@id/title_release_date"
                             android:text="release_date"
                             android:textColor="#000"
-                            android:textSize="20dp"
                             android:textStyle="normal"/>
                         <TextView
                             android:layout_width="wrap_content"
@@ -102,7 +100,6 @@
                             android:layout_alignParentLeft="true"
                             android:layout_below="@id/title_release_date"
                             android:textColor="#000"
-                            android:textSize="20sp"
                             android:textStyle="bold"/>
                         <TextView
                             android:id="@+id/popularity"
@@ -112,7 +109,6 @@
                             android:layout_below="@id/release_date"
                             android:text="popularity"
                             android:textColor="#000"
-                            android:textSize="20dp"
                             android:textStyle="normal"/>
                         <TextView
                             android:layout_width="wrap_content"
@@ -122,7 +118,6 @@
                             android:layout_alignParentLeft="true"
                             android:layout_below="@id/title_popularity"
                             android:textColor="#000"
-                            android:textSize="20sp"
                             android:textStyle="bold"/>
                         <TextView
                             android:id="@+id/vote_average"
@@ -130,10 +125,8 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/popularity"
                             android:layout_toRightOf="@id/title_vote_average"
-
                             android:text="vote_average"
                             android:textColor="#000"
-                            android:textSize="20dp"
                             android:textStyle="normal" />
                         <TextView
                             android:layout_width="wrap_content"
@@ -143,7 +136,6 @@
                             android:layout_alignParentLeft="true"
                             android:layout_below="@id/title_vote_average"
                             android:textColor="#000"
-                            android:textSize="20sp"
                             android:textStyle="bold"/>
                         <TextView
                             android:id="@+id/vote_count"
@@ -153,7 +145,6 @@
                             android:layout_toRightOf="@id/title_vote_count"
                             android:text="vote_count"
                             android:textColor="#000"
-                            android:textSize="20dp"
                             android:textStyle="normal"/>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -169,11 +160,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
 
-                                android:drawableTop="@mipmap/ic_star"
+                                android:drawableTop="@drawable/ic_star"
                                 android:gravity="center|center_horizontal"
                                 android:text="Mark As Favorite"
                                 android:textColor="@color/colorBlack"
-                                android:textSize="15dp"
                                 android:textStyle="normal" />
 
                             <TextView
@@ -182,10 +172,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center|center_horizontal"
-                                android:drawableTop="@mipmap/ic_delete"
+                                android:drawableTop="@drawable/ic_star_grey"
                                 android:text="Remove As Favorite"
                                 android:textColor="@color/colorBlack"
-                                android:textSize="15dp"
                                 android:textStyle="normal" />
                         </LinearLayout>
                     </RelativeLayout>
