@@ -65,13 +65,13 @@ public class MovieActivity extends BaseActivity {
         tabLayoutMovie.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if(tab.getPosition() == 0)
+                if(tab.getPosition() == 0) {
                     selectedTab = "popular";
-                else
+                }else {
                     selectedTab = "favorite";
+                }
 
-                onResume();
-
+                connecting(page);
                 Log.d(TAG, "Selected : " + selectedTab);
             }
 
@@ -91,7 +91,7 @@ public class MovieActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 page+=1;
-                getData(AppVar.URL_MOVIE_LATEST + page);
+                connecting(page);
             }
         });
 
@@ -100,27 +100,30 @@ public class MovieActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 page-=1;
-                if(page == 0)
+                if(page < 1) {
+                    Toast.makeText(MovieActivity.this, "Already First Page", Toast.LENGTH_SHORT).show();
                     page = 1;
-                getData(AppVar.URL_MOVIE_LATEST + page);
+                }
+                connecting(page);
             }
         });
         initRecycler();
         initAdapterMovies();
-        //getDB().clearMovie();
-        connecting();
+
         showDialog("Loading...");
+        connecting(page);
     }
 
-    private void connecting() {
+    private void connecting(int _page) {
         if (isInternetConnectionAvailable()) {
             if(selectedTab == "popular")
-                getData(AppVar.URL_MOVIE_LATEST + page);
+                getData(AppVar.URL_MOVIE_LATEST + _page);
             else
                 listAdapter.swapData(getDB().getAllListRated());
                 //getData(AppVar.URL_MOVIE_LATEST);
         } else {
-            Toast.makeText(this, "no connection", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No Connection", Toast.LENGTH_SHORT).show();
+            listAdapter.swapData(getDB().getAllListMovies());
             hideDialog();
         }
     }
@@ -165,10 +168,6 @@ public class MovieActivity extends BaseActivity {
         recyclerView.setAdapter(listAdapter);
     }
     public void getData(String url) {
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(false);
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#333333")));
-        actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Movies</font>"));
         StringRequest request = new StringRequest(Request.Method.GET
                 , url
                 , new Response.Listener<String>() { //response api
@@ -197,7 +196,6 @@ public class MovieActivity extends BaseActivity {
                         onlineMovieList.add(datajson);
                     }
 
-                    //listAdapter.swapData(getDB().getAllListMovies());
                     listAdapter.swapData(onlineMovieList);
                     hideDialog();
                 } catch (JSONException e) {
@@ -218,11 +216,7 @@ public class MovieActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(selectedTab == "popular")
-            listAdapter.swapData(getDB().getAllListMovies());
-        else
-            listAdapter.swapData(getDB().getAllListRated());
-        Log.d( TAG,"Clear data sqlite ,dan insert data dari api");
+        connecting(page);
     }
 
     @Override

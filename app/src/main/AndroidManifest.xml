@@ -13,13 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MovieActivity">
-        </activity>
+        <activity android:name=".activity.MovieActivity"></activity>
         <activity
             android:name=".activity.DetailMovieActivity"
             android:label="@string/detail_movie"
             android:parentActivityName=".activity.MovieActivity" />
-        <activity android:name=".activity.SplashScreenActivity"
+        <activity
+            android:name=".activity.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.AboutActivity"></activity>
     </application>
 
 </manifest>

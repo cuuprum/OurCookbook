@@ -50,6 +50,8 @@ TODO
  * [x] Button to next page
  * [x] Button to prev page
  * [x] Snip Assets Source Link
+ * [x] Fix logic error get data when internet connected
+ * [ ] Fix logicerror pagination for offline get data
 	
 Author
 ------

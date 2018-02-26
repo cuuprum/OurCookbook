@@ -62,55 +62,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(_db);
     }
 
-    public DatabaseHandler open() {
-        Log.d("All", "Opened");
-        SQLiteDatabase db = this.getWritableDatabase();
-        return this;
-    }
-
     public void close() {
-        SQLiteDatabase db = this.getWritableDatabase();
         this.close();
-    }
-
-    public int getCountMovies() {
-        String selectQuery = "SELECT " +
-                KEY_ID + ", " +
-                KEY_TITLE + ", " +
-                KEY_POSTER_PATH + ", " +
-                KEY_FAVORITE + ", " +
-                KEY_OVERVIEW + ", " +
-                KEY_POPULARITY + ", " +
-                KEY_RELEASE_DATE + ", " +
-                KEY_VOTE_AVERAGE + ", " +
-                KEY_VOTE_COUNT +
-                " FROM " + TABLE_MOVIES +
-                " WHERE " + KEY_FAVORITE + "= 'FALSE'" +
-                " ORDER BY " + KEY_ID + " DESC";
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        return cursor.getCount();
-    }
-
-    public int getCountByRated() {
-        String selectQuery = "SELECT " +
-                KEY_ID + ", " +
-                KEY_TITLE + ", " +
-                KEY_POSTER_PATH + ", " +
-                KEY_FAVORITE + ", " +
-                KEY_OVERVIEW + ", " +
-                KEY_POPULARITY + ", " +
-                KEY_RELEASE_DATE + ", " +
-                KEY_VOTE_AVERAGE + ", " +
-                KEY_VOTE_COUNT +
-                " FROM " + TABLE_MOVIES +
-                " WHERE " + KEY_FAVORITE + "= 'TRUE'" +
-                " ORDER BY " + KEY_ID + " DESC";
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        return cursor.getCount();
     }
 
     public void addMovie(Movies _movies) {
@@ -171,61 +124,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return movies;
     }
 
-    public List<Movies> getAllMovies() {
-        List<Movies> movieList = new ArrayList<Movies>();
-        String selectQuery = "SELECT " +
-                KEY_ID + ", " +
-                KEY_TITLE + ", " +
-                KEY_POSTER_PATH + ", " +
-                KEY_FAVORITE + ", " +
-                KEY_OVERVIEW + ", " +
-                KEY_POPULARITY + ", " +
-                KEY_RELEASE_DATE + ", " +
-                KEY_VOTE_AVERAGE + ", " +
-                KEY_VOTE_COUNT +
-                " FROM " + TABLE_MOVIES +
-                " WHERE " + KEY_FAVORITE + "= 'FALSE'" +
-                " ORDER BY " + KEY_ID + " DESC";
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
-            do {
-                Movies movies = new Movies(Integer.parseInt(cursor.getString(0)),
-                        cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getDouble(5), cursor.getString(6), cursor.getDouble(7), cursor.getInt(8));
-                movieList.add(movies);
-            } while (cursor.moveToNext());
-        }
-        return movieList;
-    }
-
-    public List<Movies> getAllRated() {
-        List<Movies> movieList = new ArrayList<Movies>();
-        String selectQuery = "SELECT " +
-                KEY_ID + ", " +
-                KEY_TITLE + ", " +
-                KEY_POSTER_PATH + ", " +
-                KEY_FAVORITE + ", " +
-                KEY_OVERVIEW + ", " +
-                KEY_POPULARITY + ", " +
-                KEY_RELEASE_DATE + ", " +
-                KEY_VOTE_AVERAGE + ", " +
-                KEY_VOTE_COUNT +
-                " FROM " + TABLE_MOVIES +
-                " WHERE " + KEY_FAVORITE + "= 'FALSE'" +
-                " ORDER BY " + KEY_ID + " DESC";
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
-            do {
-                Movies movies = new Movies(Integer.parseInt(cursor.getString(0)),
-                        cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getDouble(5), cursor.getString(6), cursor.getDouble(7), cursor.getInt(8));
-                movieList.add(movies);
-            } while (cursor.moveToNext());
-        }
-        return movieList;
-    }
-
-    public ArrayList<Movies> getAllListRated() {
+    public ArrayList<Movies> getAllListRated(int _page) {
         ArrayList<Movies> movieList = new ArrayList<Movies>();
         String selectQuery = "SELECT " +
                 KEY_ID + ", " +
@@ -239,7 +138,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 KEY_VOTE_COUNT +
                 " FROM " + TABLE_MOVIES +
                 " WHERE " + KEY_FAVORITE + "= 'TRUE'" +
-                " ORDER BY " + KEY_RELEASE_DATE + " DESC";
+                " ORDER BY " + KEY_RELEASE_DATE + " DESC" +
+                " LIMIT 20 OFFSET " + _page;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
@@ -252,7 +152,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return movieList;
     }
 
-    public ArrayList<Movies> getAllListMovies() {
+    public ArrayList<Movies> getAllListMovies(int _page) {
         ArrayList<Movies> movieList = new ArrayList<Movies>();
         String selectQuery = "SELECT " +
                 KEY_ID + ", " +
@@ -265,7 +165,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 KEY_VOTE_AVERAGE + ", " +
                 KEY_VOTE_COUNT +
                 " FROM " + TABLE_MOVIES +
-                " ORDER BY " + KEY_RELEASE_DATE + " DESC";
+                " ORDER BY " + KEY_RELEASE_DATE + " DESC" +
+                " LIMIT 20 OFFSET " + _page;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
