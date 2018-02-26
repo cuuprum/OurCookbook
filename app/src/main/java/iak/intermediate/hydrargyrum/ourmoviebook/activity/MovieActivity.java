@@ -258,6 +258,10 @@ public class MovieActivity extends BaseActivity {
 
         if(id == R.id.exitapp)
             exit();
+        else{
+            Intent inAbout = new Intent(MovieActivity.this, AboutActivity.class);
+            startActivity(inAbout);
+        }
 
         return super.onOptionsItemSelected(item);
     }

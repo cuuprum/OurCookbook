@@ -6,4 +6,14 @@
     <string name="judul">JUDUL</string>
     <string name="reload">Refresh</string>
     <string name="exitapp">Close</string>
+    <string name="about">
+        <html>
+            <body>
+                Our Movie Book App provide you list of Box Office films that you make favorite book list!<br/>
+                This application submitted for final project of <a href='http://indonesiaandroidkejar.id/'> Indonesia Android Kejar Program (Intermediate Level)</a><br/>
+                Written with chocolate by <a href='https://github.com/cuuprum/OurMovieBook'>Muhammad Faishal - @cuuprum on GitHub. 2018</a><br/>
+                This app under MIT License.
+            </body>
+        </html>>
+    </string>
 </resources>

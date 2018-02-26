@@ -49,8 +49,7 @@ public class DetailMovieActivity extends BaseActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#333333")));
-        actionBar.setTitle(Html.fromHtml("<font color='#FFFFFF'>Detail Movie</font>"));
+        actionBar.setTitle("Detail Movie");
 
         movies = (Movies) getIntent().getSerializableExtra("movie");
         String log = "Id: " + movies.getId() + " Title: " + movies.getTitle() +  " ,Image: " + movies.getPoster_path() + " ,favorite: " + movies.getFavorite();

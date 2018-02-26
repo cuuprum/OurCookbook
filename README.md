@@ -55,6 +55,7 @@ TODO
  * [x] Fix Logic Error for Popular and Fav when connected to internet	
  * [x] Fix Recycler view layout
  * [x] Add Signed APK
+ * [x] Add About
 	
 Author
 ------
@@ -66,4 +67,4 @@ MIT. See the [LICENSE][3] file for details.
 
 [1]: http://indonesiaandroidkejar.id/
 [2]: https://github.com/cuuprum	
-[3]: https://github.com/cuuprum/blob/master/LICENSE
+[3]: https://github.com/cuuprum/OurMovieBook/blob/master/LICENSE
